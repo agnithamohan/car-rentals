@@ -1,0 +1,61 @@
+body
+{
+	background:#470364 ;
+	text-align:center;
+	padding:100px; 
+}
+h1
+{
+
+	color:white; 
+}
+
+.wrapper
+{
+	margin:auto; 
+	width:70%;
+	padding:10px;
+	margin-bottom:10px; 	
+	padding-bottom: 40px; 
+	background:white; 
+	text-align:center;
+	
+
+}
+
+.wrapper h2
+{
+	text-transform: uppercase; 
+	color: #470364; 
+	text-align:center;
+	margin-bottom:60px; 
+
+}
+
+.wrapper p
+{
+	color:#222; 
+	font-weight: bold;
+
+}
+
+.wrapper input[type=text],.wrapper input[type=email],textarea
+{
+	width:50%;
+	margin-bottom:40px;
+	padding:5px; 
+	text-align:left; 
+
+}
+
+.wrapper a{
+	text-decoration:none;
+	color:#fff;
+	background:#2ecc71;
+	display:block; 
+	padding: 10px 15px; 
+	text-align:center; 
+	font-size:15px; 
+	width:50%;
+	margin:auto; 
+	
