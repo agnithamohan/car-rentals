@@ -1,6 +1,9 @@
 body
 {
-	background:white;
+	
+	background:url(bg.jpeg);
+
+	background-size: 100%; 
 	margin:0;  
 }
 
