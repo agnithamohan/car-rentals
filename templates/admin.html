@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Admin Page</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/admin.css')}}">
+</head>
+
+<body background="{{ url_for('static', filename='styles/images/admin.jpeg')}}">
+	<div class="navbar">
+	<form action = "http://localhost:5000/admin" method = "post">
+	<ul style="padding-left:250px;">
+		<li><a href="admin"> Home </a></li>
+		<li ><a href="#">Car Database&nbsp&#8681</a>
+			<ul>
+				<li><a><input type = "submit" name = "submit" value = "Add Car"></a></li>
+				<li><a><input type = "submit" name = "submit" value = "Remove Car"></a></li>
+				<li><a><input type = "submit" name = "submit" value = "Modify Car"></a></li>
+				
+			</ul>
+		</li>
+		
+		<li><a href="#">Customer Database&nbsp&#8681</a>
+			<ul>
+				
+				<li><a><input type = "submit" name = "submit" value = "Remove Customer"></a></li>
+				<li><a><input type = "submit" name = "submit" value = "Modify Customer"></a></li>
+				
+			</ul> 
+		</li>
+
+		<li><a href="#">Chauffeur Database&nbsp&#8681</a>
+			<ul>
+				<li><a><input type = "submit" name = "submit" value = "Add Chauffeur"></a></li>
+				<li><a><input type = "submit" name = "submit" value = "Remove Chauffeur"></a></li>
+				<li><a><input type = "submit" name = "submit" value = "Modify Chauffeur"></a></li>
+				
+			</ul> 
+		</li>
+		<li><a href="billconfirm">Confirm Billing</a></li>
+		<li><a href="contact-us"> Logout </a></li>
+
+		
+		
+
+
+	</form>
+	</ul>
+	</div>
+
+
+		{%if flag == 1 %}
+ 		<div class="formBox">
+		
+		<h1 style="text-align:center">Add Car</h1>
+	 	<form action = "http://localhost:5000/admin" method = "post">
+  			Deposit:
+  			<input type="text" name="deposit" placeholder="Deposit">
+  			
+			<br><br>Car Model: 
+			<input type="text" name="carmodel" placeholder="Car Model">
+			<br><br>Registration Number:
+			<input type="text" name="regno" placeholder="eg:KA 03 MP 1245">
+			
+			
+			<br><br>Location:<br>
+
+			<input type="radio" name="location" value="Bangalore" checked> Bangalore<br>
+	         	<input type="radio" name="location" value="Chennai">Chennai<br>
+  			<input type="radio" name="location" value="Bhopal">Bhopal<br>			
+  			<input type="radio" name="location" value="Hyderabad">Hyderabad<br>
+
+
+			<br>
+			<br>
+			<input type="submit" name = "submit" value="Car Add">
+
+
+		</form> 
+		</div>
+		{%endif%} 
+
+
+		{%if flag == 2 %}
+ 		<div class="formBox">
+		
+		<h1 style="text-align:center">Remove Car</h1>
+	 	<form action = "http://localhost:5000/admin" method = "post">
+  			
+			<br><br>Registration Number:
+			<input type="text" name="regno" placeholder="eg:KA 03 MP 1245">
+			
+			
+			
+			<br>
+			<br>
+			<input type="submit" name = "submit" value="Car Remove">
+
+
+		</form> 
+		</div>
+		{%endif%} 
+
+		{%if flag == 3 %}
+ 		<div class="formBox">
+		
+		<h1 style="text-align:center">Modify Car</h1>
+	 	<form action = "http://localhost:5000/admin" method = "post">
+  			
+			<br><br>Registration Number:
+			<input type="text" name="regno" placeholder="eg:KA 03 MP 1245">
+			<br><br>Field:<br>
+
+			<input type="radio" name="field" value="Deposit" checked> Deposit<br>
+	         	<input type="radio" name="field" value="Car_Model">Car Model<br>
+  			<input type="radio" name="field" value="Location">Location<br>
+
+			<br><br>Value:
+			<input type="text" name="value" placeholder="Value">
+			
+			
+			
+			<br>
+			<br>
+			<input type="submit" name = "submit" value="Car Modify">
+
+
+		</form> 
+		</div>
+		{%endif%} 
+
+	
+		{%if flag == 4 %}
+ 		<div class="formBox">
+		
+		<h1 style="text-align:center">Delete Customer</h1>
+	 	<form action = "http://localhost:5000/admin" method = "post">
+  			C_ID
+  			<input type="text" name="C_ID" placeholder="Customer ID">
+  			
+
+
+			<br>
+			<br>
+			<input type="submit"  name = "submit" value="Customer Remove">
+
+
+		</form> 
+		</div>
+		{%endif%} 
+
+
+
+		{%if flag == 5 %}
+ 		<div class="formBox">
+		
+		<h1 style="text-align:center">Modify Customer</h1>
+	 	<form action = "http://localhost:5000/admin" method = "post">
+  			
+			<br><br>Customer ID:
+			<input type="text" name="CID" placeholder="c_ID">
+			<br><br>Field:<br>
+
+			<input type="radio" name="field" value="C_name" checked>Name<br>
+	         	<input type="radio" name="field" value="DoB">Date of Birth<br>
+  			<input type="radio" name="field" value="Phone">Phone<br>
+			<input type="radio" name="field" value="DL_Number" checked>DL_Number<br>
+	         	<input type="radio" name="field" value="Door_Number">Door Number<br>
+  			<input type="radio" name="field" value="Street_Name">Street Name<br>
+			<input type="radio" name="field" value="City" checked> City<br>
+	         	<input type="radio" name="field" value="State">State<br>
+			
+			<br><br>Value:
+			<input type="text" name="value" placeholder="Value">
+			
+			
+			
+			<br>
+			<br>
+			<input type="submit" name = "Submit" value="Customer Modify">
+
+
+		</form> 
+		</div>
+		{%endif%} 
+
+
+		{%if flag == 6   %}
+ 		<div class="formBox">
+		
+		<h1 style="text-align:center">Add Chauffeur</h1>
+	 	<form action = "http://localhost:5000/admin" method = "post">
+  			Chauffeur ID:
+  			<input type="text" name="Chauffeur_ID" placeholder="Chauffeur ID">
+  			
+			<br><br>Chauffeur_Name: 
+			<input type="text" name="Chauffeur_Name" placeholder="Chauffeur Name">
+			<br><br>DL_Number:
+			<input type="text" name="DL_Number" placeholder="DL Number">
+			
+			
+			<br><br>Per Hour Charges:<br>
+			<input type="text" name="Per_Hour_Charges" placeholder="Per Hour Charges">
+
+			<input type="radio" name="location" value="Bangalore" checked> Bangalore<br>
+	         	<input type="radio" name="location" value="Chennai">Chennai<br>
+  			<input type="radio" name="location" value="Bhopal">Bhopal<br>			
+  			<input type="radio" name="location" value="Hyderabad">Hyderabad<br>
+
+
+			<br>
+			<br>
+			<input type="submit" name = "submit" value="Chauffeur Add">
+
+
+		</form> 
+		</div>
+		{%endif%} 
+
+
+		{%if flag == 7 %}
+ 		<div class="formBox">
+		
+		<h1 style="text-align:center">Remove Chauffeur</h1>
+	 	<form action = "http://localhost:5000/admin" method = "post">
+  			
+			<br><br>Chauffeur ID:
+			<input type="text" name="Chauffeur_ID" placeholder="Chauffeur_ID">
+			
+			
+			
+			<br>
+			<br>
+			<input type="submit" name = "submit" value="Chauffeur Remove">
+
+
+		</form> 
+		</div>
+		{%endif%} 
+
+		{%if flag == 8 %}
+ 		<div class="formBox">
+		
+		<h1 style="text-align:center">Modify Chauffeur</h1>
+	 	<form action = "http://localhost:5000/senddata" method = "post">
+  			
+			<br><br>Chauffeur ID:
+			<input type="text" name="Chauffeur_ID" placeholder="Chauffeur ID">
+			<br><br>Field:<br>
+
+			<input type="radio" name="Chauffeur_Name" value="Chauffeur_Name" checked>Chauffeur_Name<br>
+	         	<input type="radio" name="DL_Number" value="DL_Number">DL Number<br>
+	         	<input type="radio" name="Per_Hour_Charges" value="Per_Hour_Charges">Per_Hour_Charges<br>
+			
+  			<input type="radio" name="location" value="Location">Location<br>
+
+			<br><br>Value:
+			<input type="text" name="value" placeholder="Value">
+			
+			
+			
+			<br>
+			<br>
+			<input type="submit" value="Submit">
+
+
+		</form> 
+		</div>
+		{%endif%} 
+
+	
+
+		
+	
+</body>
+</html>

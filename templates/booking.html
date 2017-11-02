@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Booking</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/booking.css')}}">
+</head>
+<body>
+
+<h1>Booking</h1>
+<hr>
+<br>
+<h2>Pick-up Time: {{pick_up}} </h2>
+<h2>Drop-up Time: {{drop_off}} </h2>
+<h2>Location: {{location}} </h2>
+<form action = "http://localhost:5000/final" method = "post">
+<table>
+
+<TR>
+   <TD class="c1"><h2>	</h2></TD>
+   <TD class="c2"><h2>Reg No.</h2></TD>
+   <TD class="c3"><h2>City</h2></TD>
+   <TD class="c4"><SPAN><h2>Car Model</h2></SPAN></TD>
+   <TD class="c5"><SPAN><h2>Car Company</h2></SPAN></TD>
+   <TD class="c4"><SPAN><h2>No. of Seats</h2></SPAN></TD>
+   <TD class="c4"><SPAN><h2>Weekday Rates</h2></SPAN></TD>
+   <TD class="c4"><SPAN><h2>Weekend Rates</h2></SPAN></TD>
+   <TD class="c4"><SPAN><h2>Peak Season Rates</h2></SPAN></TD>
+</TR>
+{% for item in items %}
+	
+<TR>
+  
+   <TD class="c1"> <input type="radio" name="Choice:" value={{item[2]}}> <IMG src="{{ url_for('static', filename='styles/images/'+item[2]+'.jpeg')}}"></TD>
+   <TD class="c2">{{item[0]}}</TD>
+   <TD class="c3">{{item[1]}}</TD>
+   <TD class="c4"><SPAN>{{item[2]}}</SPAN></TD>
+   <TD class="c5"><SPAN>{{item[3]}}</SPAN></TD>
+   <TD class="c4"><SPAN>{{item[4]}} seater</SPAN></TD>
+   <TD class="c4"><SPAN>Rs.{{item[5]}}</SPAN></TD>
+   <TD class="c4"><SPAN>Rs.{{item[6]}}</SPAN></TD>
+   <TD class="c4"><SPAN>Rs.{{item[7]}}</SPAN></TD>
+  
+	
+</TR>
+{% endfor %}
+</table>
+<br>
+<br>
+<table>
+<TR>
+  
+   <TD class="c1"><h2>Chauffeur ID</h2></TD>
+   <TD class="c2"><h2>Chauffeur Name</h2></TD>
+   <TD class="c3"><h2>Per Hour Charges</h2></TD>
+   
+</TR>
+
+{% for item in items2 %}
+<TR>
+  
+   <TD class="c1"> <input type="radio" name="Choice:" value={{item[2]}}> {{item[0]}}</TD>
+   <TD class="c2">{{item[1]}}</TD>
+   <TD class="c3">{{item[2]}}</TD>
+   
+</TR>
+
+{% endfor %}
+<TR> 
+  <TD class = "c1" style="text-align:center"><input type="radio" name="Choice:" value="none"> No Chauffeur</TD>
+</TR>
+</table>
+<br>
+<br>
+<input type="submit" class="submit" value="Submit">
+</form>
+
+</body>
+</html>

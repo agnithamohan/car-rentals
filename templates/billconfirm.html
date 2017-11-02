@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Billing Confirmation</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/billconfirm.css')}}">
+</head>
+<body>
+<div align=center>
+
+<h4>Enter Bill_ID</h4>
+
+<form action ="http://localhost:5000/billconfirm" method = "post">
+<br>  <input type="text" name="search" placeholder="Search..">
+<br><br>
+<input type="submit" name = "submit" value="Search">
+<br>
+<br>
+
+</form>
+
+</div>
+
+
+{%if flag == 1%}
+<form action ="'http://localhost:5000/billconfirm2/{{item[0]}}" method = "post">
+<table  border=1 frame=hsides rules=rows>
+<tr>
+<td>Bill_ID</td>
+<td>Base_Amount</td>
+<td>Booking_Date</td> 
+<td>Booking_Duration</td> 
+<td>Registration_Number</td>
+<td>Chauffeur_ID</td>
+<td>C_ID</td>
+<td>Status</td>
+<td>Extra_Distance</td> 
+<td>Extra_Time</td>
+<td>Chauffeur_Charges</td>
+<td>Other_Charges</td>
+</tr>
+<tr>
+
+<tr>
+<td>{{item[0]}}</td>
+<td>{{item[1]}}</td>
+<td>{{item[2]}}</td>
+<td>{{item[3]}}</td>
+<td>{{item[4]}}</td>
+<td>{{item[5]}}</td>
+<td>{{item[6]}}</td>
+<td>{{item[7]}}</td>
+<td><input type="text" name="Extra_Distance" placeholder="Extra Distance"  style="width:20%;color:black;"></td>
+<td><input type="text" name="Extra_Time" placeholder="Extra Time" style="width:20%"></td>
+<td><input type="text" name="Chauffeur_Charges" placeholder="Chauffeur Charges" style="width:20%"></td>
+<td><input type="text" name="Other_Charges" placeholder="Other Charges"style="width:20%"></td>
+
+</tr>
+</table>
+<br>
+<br>
+<input type="submit" name = "submit" value="Finish" style="background-color:black;color:white;margin:auto;width:100%; "> 
+
+</form>
+
+
+{%endif%}
+	
+</body>
+
+
+</html>
+

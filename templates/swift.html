@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Innova</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/home-1.css')}}">
+</head>
+
+<body>
+	<div class="navbar">
+	<ul>
+		<li><a href="login"> Home </a></li>
+		<li><a href="#"> About Us&nbsp&#8681</a>
+			<ul>
+				<li><a href = "#">Overview</a></li>
+				<li><a href = "#">Our Team</a></li>
+			</ul>
+		</li>
+		
+		<li><a href="#"> Available Cars&nbsp&#8681</a>
+			<ul>
+				<li><a href = "innova">Innova</a></li>
+				<li><a href = "ritz">Ritz </a></li>
+				<li><a href = "scorpio">Scorpio</a></li>
+				<li><a href = "swift">Swift</a></li>
+			</ul> 
+		</li>
+		<li><a href="#"> Tariff </a></li>
+		<li><a href="contact-us"> Contact Us </a></li>
+
+	</ul>
+	</div>
+
+	<p>
+	<img src="{{ url_for('static', filename='styles/images/' +item[0]+ '.jpeg')}}" alt="Ritz" style="float:left">
+	<h4  style="color:blue">{{item[1]}}</h4>
+
+	<h1 style="color:blue">{{item[0]}}</h1>
+	
+	<h4  style="color:blue">{{item[2]}} seater</h4>
+
+	<br>
+
+	<h4>Weekday Rate ₹{{item[4]}}/hr</h4>
+	<h4>Weekend Rate ₹{{item[5]}}/hr</h4>
+	<h4>Peak season Rate ₹{{item[6]}}/hr</h4>
+	</p>
+	 
+</div>
+</body>
+</html>

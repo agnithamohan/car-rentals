@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Home Page</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/home-1.css')}}">
+</head>
+
+<body background	="{{ url_for('static', filename='styles/images/bg.jpeg')}}">
+	<div class="navbar">
+	<ul>
+		<li><a href="home"> Home </a></li>
+		<li><a href="#"> About Us&nbsp&#8681</a>
+			<ul>
+				<li><a href = "#">Overview</a></li>
+				<li><a href = "#">Our Team</a></li>
+			</ul>
+		</li>
+		
+		<li><a href="#"> Available Cars&nbsp&#8681</a>
+			<ul>
+				<li><a href = "innova">Innova</a></li>
+				<li><a href = "ritz">Ritz </a></li>
+				<li><a href = "scorpio">Scorpio</a></li>
+				<li><a href = "swift">Swift</a></li>
+				
+			</ul> 
+		</li>
+		<li><a href="#"> Tariff </a></li>
+		<li><a href="contact-us"> Contact Us </a></li>
+
+		
+		<li><a href="#">&nbsp&#926</a>
+			<ul>
+				<li><a href = "#">&#9873 {{name}}</a></li>
+				
+				<li><a href = "login">Logout</a></li>
+				
+			</ul> 
+		</li>
+
+
+
+
+	</ul>
+	</div>
+
+
+	<div class="form">
+  <form action =  "http://localhost:5000/booking/{{name}}" method = "post">
+  
+   
+    <label for="city">Choose city:</label>
+    <select id="city" name="city">
+	
+      <option value="hyderabad">Hyderabad</option>
+      <option value="chennai">Chennai</option>
+      <option value="bangalore">Bangalore</option>
+      <option value="bhopal">Bhopal</option>
+      
+    </select>
+
+
+	
+	<label for="pickup">Pickup Date:</label>
+    <input type="text" id="pickup" name="pickup" placeholder="YYYY-MM-DD">
+
+    <label for="dropoff">Drop Off Date:</label>
+    <input type="text" id="dropoff" name="dropoff" placeholder="YYYY-MM-DD">
+
+	<br><br>	
+	<input type="submit" name="" value="Submit">
+  
+ 
+  </form>
+</div>
+</body>
+</html>

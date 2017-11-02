@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Sign Up</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='styles/sign-up.css')}}">
+	</head>
+	
+	<body>
+		<div class="title"><h1>Register</h1></div>
+ 		<div class="formBox">
+	 	<form action = "http://localhost:5000/sign-up" method = "post">
+  			First name:
+  			<input type="text" name="first" placeholder="firstname">
+  			&nbsp &nbsp &nbsp &nbsp Last name:
+ 		 	<input type="text" name="last" placeholder="lastname">
+
+			<br><br>Email Address: 
+			<input type="email" name="email" placeholder="Email Address">
+			{%if flag == 1 %}
+			<br>Passwords don't match!<br>
+			{%endif%}
+			<br><br>Enter Password:
+			<input type="password" name="pwd" placeholder="password">
+			
+			<br><br>Re-enter Password:
+			<input type="password" name="rpwd" placeholder="password">
+			<br><br>Date of Birth<br>
+			<input type="text" name="date" placeholder="DD">
+			<input type="text" name="month" placeholder="MM">
+			<input type="text" name="year" placeholder="YYYY">
+			
+			<br><br>Gender:<br>
+
+			<input type="radio" name="gender" value="male" checked> Male<br>
+	         	<input type="radio" name="gender" value="female"> Female<br>
+  			<input type="radio" name="gender" value="other"> Other
+
+			<br><br>Phone:<br>
+			<input type="text" name="phone" placeholder="phone">
+
+			<br><br>Door no:<br>
+			<input type="number" name="doorNo" placeholder="door #">
+
+			&nbsp &nbsp &nbsp &nbsp Street Name:
+			<input type="text" name="streetName" placeholder="street">
+				
+			<br>City<br>
+			<input type="text" name="city" placeholder="city">
+				
+			<br>State<br>
+			<input type="text" name="state" placeholder="state">
+			
+			<br><br>Driving License number:<br>
+			<input type="text" name="dlno" placeholder="DL number">
+			
+			<br>
+			<br>
+			{%if flag == 2%}
+			<br><br>Plz Accept bro<br>
+			{%endif%}
+			I accept the terms and conditions for signing up to this service, and hereby confirm I have read the privacy policy.
+			<br> <input type="radio" name="terms" value="Agree">Agree to terms and conditions<br>
+			
+
+			<br>
+			<br>
+			<input type="submit" value="Submit">
+
+
+		</form> 
+		</div>
+	</body>
+</html> 

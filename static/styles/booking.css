@@ -1,0 +1,74 @@
+h1
+{
+	text-align:center; 
+	
+	color: white; 
+}
+
+h2
+{	
+	text-align:center; 
+	padding:10px; 
+	color:white; 
+	font-size:25px; 
+
+}
+body
+{
+  	   background: linear-gradient(to right, #1d0118,#4f0241,#72035e,#8a0372,#aa068d,#c607a4,#f60acc); 
+	margin: 0; 
+
+
+	padding:75px; 
+	
+
+	background-size: cover; 
+	font-family: sans-serif;
+}
+
+TR
+{
+	color: white; 
+	font-size:20px;
+
+}
+TD
+{
+	padding:30px;  
+
+}
+img
+{
+
+	height: 100px;
+    	width: 100px;
+}
+
+table,th,tf
+{
+	margin: 0; 
+	width:100% ;
+	border:1px solid white; 
+	border-collapse: collapse ; 
+	background-color: black; 
+	text-align:center; 
+}
+
+
+.submit
+{
+    background-color: black; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin:auto; 
+    border:1px solid white; 
+    
+}
+
+.button
+
