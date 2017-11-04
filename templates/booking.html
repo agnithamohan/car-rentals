@@ -14,7 +14,7 @@
 <h2>Pick-up Time: {{pick_up}} </h2>
 <h2>Drop-up Time: {{drop_off}} </h2>
 <h2>Location: {{location}} </h2>
-<form action = "http://localhost:5000/final" method = "post">
+<form action = "http://localhost:5000/payment/{{number}}" method = "post">
 <table>
 
 <TR>
@@ -32,7 +32,7 @@
 	
 <TR>
   
-   <TD class="c1"> <input type="radio" name="Choice:" value={{item[2]}}> <IMG src="{{ url_for('static', filename='styles/images/'+item[2]+'.jpeg')}}"></TD>
+   <TD class="c1"> <input type="radio" name="regno" value="{{item[0]}}"> <IMG src="{{ url_for('static', filename='styles/images/'+item[2]+'.jpeg')}}"></TD>
    <TD class="c2">{{item[0]}}</TD>
    <TD class="c3">{{item[1]}}</TD>
    <TD class="c4"><SPAN>{{item[2]}}</SPAN></TD>
@@ -60,7 +60,7 @@
 {% for item in items2 %}
 <TR>
   
-   <TD class="c1"> <input type="radio" name="Choice:" value={{item[2]}}> {{item[0]}}</TD>
+   <TD class="c1"> <input type="radio" name="chno" value={{item[0]}}> {{item[0]}}</TD>
    <TD class="c2">{{item[1]}}</TD>
    <TD class="c3">{{item[2]}}</TD>
    
@@ -68,7 +68,7 @@
 
 {% endfor %}
 <TR> 
-  <TD class = "c1" style="text-align:center"><input type="radio" name="Choice:" value="none"> No Chauffeur</TD>
+  <TD class = "c1" style="text-align:center"><input type="radio" name="chno" value="none"> No Chauffeur</TD>
 </TR>
 </table>
 <br>

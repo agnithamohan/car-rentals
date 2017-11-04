@@ -1,6 +1,8 @@
 from flask import Flask, url_for, redirect, request,render_template
 from flask_mysqldb import MySQL
 import hashlib
+from datetime import datetime
+import calendar
 
 app = Flask(__name__)
 mysql = MySQL(app)
@@ -69,17 +71,17 @@ def home(user):
 	con = mysql.connection
 	cur = con.cursor()
 	cur.execute("Use car_rental;")
-	cur.execute("Select Password_hash,C_Name from Customer where C_ID = "+str(user)+";")
+	cur.execute("Select Password_hash,C_Name,C_ID from Customer where C_ID = "+str(user)+";")
 	data = cur.fetchall()
-	return render_template("home-1.html",name = data[0][1])
+	return render_template("home-1.html",name = data[0][1],number = data[0][2])
 
-@app.route('/forgotpassword')
+@app.route('/forgotpassword/<int:user>')
 def fpwd():
 	return render_template('forgotpassword.html')
 
-@app.route('/contact-us')
-def contact():
-	return render_template('contact-us.html')
+@app.route('/contact-us/<int:user>')
+def contact(user):
+	return render_template('contact-us.html',number = user)
 
 @app.route('/recovery')
 def recover():
@@ -97,44 +99,63 @@ def booking(user):
 	data = cur.fetchall()
 	cur.execute("select Chauffeur_ID, Chauffeur_Name, Per_Hour_Charges from Chauffeur c INNER JOIN Billing b using(Chauffeur_ID) where b.Booking_Date NOT BETWEEN '"+pickup+"' and '"+dropoff+"' and DATE_ADD(b.Booking_Date,INTERVAL b.Booking_Duration DAY) not between '"+pickup+"' and '"+dropoff+"' and  c.location='"+location+"' UNION select Chauffeur_ID,Chauffeur_Name,Per_Hour_Charges from Chauffeur where Chauffeur_ID not in(select Chauffeur_ID from Billing where Chauffeur_ID is not null) and location='"+location+"';");
 	data2 = cur.fetchall()
+	pick = datetime.strptime(pickup,"%Y-%m-%d").date()
+	drop = datetime.strptime(dropoff,"%Y-%m-%d").date()
+	delta = drop - pick
+	cur.execute("select max(Bill_ID) from Billing;")
+	data3 = cur.fetchall()
+	bill = int(data3[0][0])+1
+	cur.execute("Insert into Billing(Bill_ID,Base_Amount,Booking_Date,Booking_Duration,C_ID,Status) values("+str(bill)+",0,'"+str(pickup)+"',"+str(delta.days)+","+str(user)+",'Pending');")
+	con.commit()
+	return render_template("booking.html",location = location, pick_up = pickup, drop_off = dropoff, items = data,items2 = data2,number = bill)
 
-	return render_template("booking.html",location = location, pick_up = pickup, drop_off = dropoff, items = data,items2 = data2)
-
-@app.route('/ritz')
-def ritz():
+@app.route('/ritz/<int:user>')
+def ritz(user):
 	con = mysql.connection
 	cur = con.cursor()
 	cur.execute("Use car_rental;")
 	cur.execute("Select * from Car_Type where Car_Model like 'Ritz';")
 	data = cur.fetchall()
-	return render_template("ritz.html",item = data[0])
+	return render_template("innova.html",item = data[0],number = user)
 
-@app.route('/swift')
-def swift():
+@app.route('/swift/<int:user>')
+def swift(user):
 	con = mysql.connection
 	cur = con.cursor()
 	cur.execute("Use car_rental;")
 	cur.execute("Select * from Car_Type where Car_Model like 'Swift';")
 	data = cur.fetchall()
-	return render_template("swift.html",item = data[0])
+	return render_template("innova.html",item = data[0], number = user)
 
-@app.route('/scorpio')
-def scorpio():
+@app.route('/scorpio/<int:user>')
+def scorpio(user):
 	con = mysql.connection
 	cur = con.cursor()
 	cur.execute("Use car_rental;")
 	cur.execute("Select * from Car_Type where Car_Model like 'Scorpio';")
 	data = cur.fetchall()
-	return render_template("scorpio.html",item = data[0])
+	return render_template("innova.html",item = data[0], number = user)
 
-@app.route('/innova')
-def innova():
+@app.route('/innova/<int:user>')
+def innova(user):
 	con = mysql.connection
 	cur = con.cursor()
 	cur.execute("Use car_rental;")
 	cur.execute("Select * from Car_Type where Car_Model like 'Innova';")
 	data = cur.fetchall()
-	return render_template("innova.html",item = data[0])
+	return render_template("innova.html",item = data[0], number = user)
+
+@app.route('/profile/<int:user>')
+def profile(user):
+	con = mysql.connection
+	cur = con.cursor()
+	cur.execute("Use car_rental;")
+	cur.execute("Select C_ID,C_Name, DoB, Phone,DL_Number,Door_Number,Street_Name,City,State from Customer where C_ID="+str(user)+";")
+	data2 = cur.fetchall()
+	cur.execute("select Bill_ID, Base_Amount,Booking_Date,Booking_Duration,Extra_Distance,Extra_Time,Chauffeur_Charges,Other_Charges,Registration_Number,Chauffeur_ID, Status from Billing where C_ID="+str(user)+";")
+	data = cur.fetchall()
+	return render_template("profile.html",items = data, number = user, it = data2[0])
+
 
 @app.route('/admin',methods = ['GET','POST'])
 def admin():
@@ -182,7 +203,7 @@ def admin():
 			cur = con.cursor()
 			cur.execute("Use car_rental;")
 			cur.execute("Update Car_Details set" + field + " = "+ value+"where Registration_Number like '"+regno+"';")
-			cur.commit()
+			con.commit()
 			return render_template('admin.html',flag = 0)
 		elif request.form['submit'] == "Customer Remove":
 			cid = request.form['C_ID']
@@ -252,7 +273,7 @@ def billconfirm():
 	else:
 		return render_template("billconfirm.html", flag = 0)
 
-@app.route('/billconfirm2/<int:ID>',methods = ['GET','POST'])
+@app.route('/billconfirm2/<ID>',methods = ['GET','POST'])
 def billconfirm2(ID):
 	if request.method == 'POST':
 		ed = request.form['Extra_Distance']
@@ -265,6 +286,65 @@ def billconfirm2(ID):
 		cur.execute("Update Billing set Extra_Distance="+ed+",Extra_Time="+et+", Chauffeur_Charges="+cc+" , Other_Charges="+oc+" where Bill_ID ="+ID+";")	
 		con.commit()
 		return redirect(url_for('admin',flag = 0))
+	else: 
+		return redirect(url_for('admin',flag = 0))
+@app.route('/tariff/<int:user>')
+def tariff(user):
+	con = mysql.connection
+	cur = con.cursor()
+	cur.execute("Use car_rental;")
+	cur.execute("Select Password_hash,C_Name,C_ID from Customer where C_ID = "+str(user)+";")
+	data = cur.fetchall()
+	cur.execute("Select Car_Model, Car_Company, No_of_Seats, Car_Type, Weekday_Rates, Weekend_Rates, Peak_Season_Rates from Car_Type;")
+	data2 = cur.fetchall()
+	return render_template("tariff.html",name = data[0][1],number = data[0][2],items = data2)
+
+
+
+@app.route('/overview/<int:user>')
+def overview(user):
+	con = mysql.connection
+	cur = con.cursor()
+	cur.execute("Use car_rental;")	
+	cur.execute("Select C_name from Customer where C_ID = "+str(user)+";")
+	data = cur.fetchall()
+	return render_template("overview.html",number = user,name = data[0][0])
+
+
+@app.route('/about/<int:user>')
+def about(user):
+	con = mysql.connection
+	cur = con.cursor()
+	cur.execute("Use car_rental;")	
+	cur.execute("Select C_name from Customer where C_ID = "+str(user)+";")
+	data = cur.fetchall()
+	return render_template("about-us.html",number = user,name = data[0][0])
+
+@app.route('/payment/<user>',methods = ['POST'])
+def payment(user):
+	if request.method == 'POST':
+		regno = request.form['regno']
+		chno = request.form['chno']
+		con = mysql.connection
+		cur = con.cursor()
+		cur.execute("Use car_rental;")
+		cur.execute("select Weekday_Rates, Weekend_Rates, Peak_Season_Rates from Car_Details d INNER JOIN Car_Type using(Car_Model) where d.Registration_Number like '"+regno+"';")
+		rates = cur.fetchall()
+		cur.execute("Select Booking_Date, Booking_Duration,C_ID from Billing where Bill_ID = "+user+";")
+		dates = cur.fetchall()
+		print regno
+		#pick = datetime.strptime(dates[0][0],"%y%m%d").date()
+		if calendar.day_name[dates[0][0].weekday()] in {"Saturday","Sunday"}:
+			cost = int(rates[0][1])*int(dates[0][1])
+		elif dates[0][0].month in {3,4,5}:
+			cost = int(rates[0][2])*int(dates[0][1])
+		else:
+			cost = int(rates[0][0])*int(dates[0][1])
+		if chno == "none":
+			chno = "NULL"
+		cur.execute("Update Billing set Base_Amount = "+str(cost)+",Chauffeur_ID = "+chno+",Registration_Number = '"+regno+"'where Bill_ID = "+user+";")
+		con.commit()
+		return render_template("payment.html",number = dates[0][2],cost = cost)
 
 if __name__ == '__main__':
    app.run(debug = True)

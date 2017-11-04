@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Profile Page</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/profile.css')}}">
+</head>
+
+<body background="{{ url_for('static', filename='styles/images/1.png')}}">
+
+<h1>User Details:</h1>
+<table style="width:100%">
+  
+ <tr>
+    <th>customer ID</th>
+    <td>{{it[0]}}</td>
+  </tr> 
+  <tr>
+    <th>C_Name</th>
+    <td>{{it[1]}}</td>
+  </tr>
+  
+
+  <tr>
+    <th>Date of Birth</th>
+    <td>{{it[2]}}</td>
+  </tr>
+
+
+  <tr>
+    <th>Phone</th>
+    <td>{{it[3]}}</td>
+  </tr>
+
+  <tr>
+    <th>DL_Number  </th>
+    <td>{{it[4]}}</td>
+  </tr>
+
+
+
+  <tr>
+    <th>Address</th>
+    <td>{{it[5]}},{{it[6]}},{{it[7]}},{{it[9]}}</td>
+  </tr>
+</table>
+
+
+
+<h1>Billing Information:</h1>
+
+<table>
+
+<TR>
+   <TD class="c1"><h2>Bill ID</h2></TD>
+   <TD class="c2"><h2>Base Amount</h2></TD>
+   <TD class="c3"><h2>Booking Date</h2></TD>
+   <TD class="c4"><SPAN><h2>Booking Duration</h2></SPAN></TD>
+   <TD class="c5"><SPAN><h2>Extra_Distance</h2></SPAN></TD>
+   <TD class="c6"><SPAN><h2>Extra_Time</h2></SPAN></TD>
+   <TD class="c7"><SPAN><h2>Chauffeur_Charges</h2></SPAN></TD>
+   <TD class="c8"><SPAN><h2>Other_Charges</h2></SPAN></TD>
+   <TD class="c9"><SPAN><h2>Registration Number</h2></SPAN></TD>
+   <TD class="c10"><SPAN><h2>Chauffeur ID</h2></SPAN></TD>
+   <TD class="c11"><SPAN><h2>Status</h2></SPAN></TD>
+</TR>
+{% for item in items %}
+	
+<TR>
+  
+   <TD class="c1">{{item[0]}}</TD>
+   <TD class="c2">{{item[1]}}</TD>
+   <TD class="c3">{{item[2]}}</TD>
+   <TD class="c4"><SPAN>{{item[3]}}</SPAN></TD>
+   <TD class="c5"><SPAN>{{item[4]}}</SPAN></TD>
+   <TD class="c6"><SPAN>{{item[5]}} </SPAN></TD>
+   <TD class="c7"><SPAN>Rs.{{item[6]}}</SPAN></TD>
+   <TD class="c8"><SPAN>Rs.{{item[7]}}</SPAN></TD>
+   <TD class="c9"><SPAN>{{item[8]}}</SPAN></TD>
+   <TD class="c10"><SPAN>{{item[9]}}</SPAN></TD>
+   <TD class="c11"><SPAN>{{item[10]}}</SPAN></TD>
+  
+	
+</TR>
+{% endfor %}
+</table>
+<br><br>
+<a href='http://localhost:5000/home/{{number}}' style="color:red">Back to Home</a>
+
+</body>
+</htm>

@@ -1,4 +1,3 @@
-
 body
 {
 	background-color:black; 
@@ -49,7 +48,7 @@ input[name=search]{
     border: 2px solid #ccc;
     border-radius: 4px;	
 }
-input[type=text]:focus {
+input[name = search]:focus {
     width: 100%;
 }
 

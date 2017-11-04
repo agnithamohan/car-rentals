@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>About  Us</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/home-1.css')}}">
+</head>
+
+<body>
+	<div class="navbar">
+	<ul>
+		<li><a href="http://localhost:5000/home/{{number}}"> Home </a></li>
+		<li><a href="#"> About Us&nbsp&#8681</a>
+			<ul>
+				<li><a href = "http://localhost:5000/overview/{{number}}">Overview</a></li>
+				<li><a href = "#">Our Team</a></li>
+			</ul>
+		</li>
+		
+		<li><a href="#"> Available Cars&nbsp&#8681</a>
+			<ul>
+				<li><a href = "http://localhost:5000/innova/{{number}}">Innova</a></li>
+				<li><a href = "http://localhost:5000/ritz/{{number}}">Ritz </a></li>
+				<li><a href = "http://localhost:5000/scorpio/{{number}}">Scorpio</a></li>
+				<li><a href = "http://localhost:5000/swift/{{number}}">Swift</a></li>
+				
+			</ul> 
+		</li>
+		<li><a href="#"> Tariff </a></li>
+		<li><a href="http://localhost:5000/contact-us/{{number}}"> Contact Us </a></li>
+
+		
+		<li><a href="#">&nbsp&#926</a>
+			<ul>
+				<li><a href = "#">&#9873 {{name}}</a></li>
+				
+				<li><a href = "login">Logout</a></li>
+				
+			</ul> 
+		</li>
+
+
+
+
+	</ul>
+	</div>
+
+
+
+<h1>Our Team</h1>
+<div class="a">
+<p>
+	<img src="{{ url_for('static', filename='styles/images/akash.jpg')}}" alt="Akash" style="float:left" data-rotate="90">
+	<h1  style="color:#090e60">Akash Rao</h1>
+
+	<h4 style="color:#090e60">Co-Founder & Chief Executive Officer</h4>
+	
+	<p>
+	 Akash's experience complimented by his enthusiasm to reach greater heights makes him a force to be reckoned with in the technological world. He is presently doing his bachelors in Computer Science Engineering in one of the top colleges in India, NITK, Surathkal. On graduating, he plans to pursue further education in the aforementioned field. 
+	
+
+	</p>
+	</p>
+
+<hr>
+<br>
+
+<p>
+	<img  src="{{ url_for('static', filename='styles/images/Agnitha.jpg')}}"  alt="Agnitha" style="float:right">
+	<h1  style="color:#090e60">Agnitha Mohanram</h1>
+	
+	<h4 style="color:#090e60">Co-Founder & Chief Operating Officer</h4>
+	
+	<p>  	
+ 	In her pre-final year at NITK, Surathkal, Agnitha thought of the idea for Crazy Taxi and, together with Akash, implemented the idea to the best of their abilities. Her keen eye and attention to detail coupled with her energetic personality was the driving force behind the timely completion of the project.   
+	
+	</p>
+	</p>
+
+<style>
+</div>
+.a
+{		
+	border: 5px solid white;
+	padding:50px; 
+	margin:100px;
+}
+body
+{
+	padding:30px;
+	background-color:#032844; 
+
+}
+h1
+{
+	font-size:30px;
+	text-align:center;
+	color:white; 
+}
+h4
+{
+	text-align:center;
+}
+p
+{	
+	font-size:20px; 
+	padding:50px;
+	text-align:center; 	 
+
+}
+body
+{
+margin-top:100px; 
+	
+color:black;
+margin:auto; 
+}
+h6
+{
+	text-align:center; 
+}
+img
+{
+	border-radius: 50%;
+	width:30%;
+	margin:auto;
+	margin-bottom:20px;
+	padding:30px;
+	padding-bottom:30px;
+	}
+</style>
+</body>
+</html>
+
+

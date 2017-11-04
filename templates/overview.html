@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Overview</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/home-1.css')}}">
+</head>
+
+<body background	="{{ url_for('static', filename='styles/images/bg.jpeg')}}">
+	<div class="navbar">
+	<ul>
+		<li><a href="http://localhost:5000/home/{{number}}"> Home </a></li>
+		<li><a href="#"> About Us&nbsp&#8681</a>
+			<ul>
+				<li><a href = "#">Overview</a></li>
+				<li><a href = "http://localhost:5000/about/{{number}}">Our Team</a></li>
+			</ul>
+		</li>
+		
+		<li><a href="#"> Available Cars&nbsp&#8681</a>
+			<ul>
+				<li><a href = "http://localhost:5000/innova/{{number}}">Innova</a></li>
+				<li><a href = "http://localhost:5000/ritz/{{number}}">Ritz </a></li>
+				<li><a href = "http://localhost:5000/scorpio/{{number}}">Scorpio</a></li>
+				<li><a href = "http://localhost:5000/swift/{{number}}">Swift</a></li>
+				
+			</ul> 
+		</li>
+		<li><a href="#"> Tariff </a></li>
+		<li><a href="http://localhost:5000/contact-us/{{number}}"> Contact Us </a></li>
+
+		
+		<li><a href="#">&nbsp&#926</a>
+			<ul>
+				<li><a href = "#">&#9873 {{name}}</a></li>
+				
+				<li><a href = "login">Logout</a></li>
+				
+			</ul> 
+		</li>
+
+
+
+
+	</ul>
+	</div>
+
+<h1 style="color:black;text-align:center;">CRAZY TAXI</h1>
+
+<div class="overview"> 
+
+
+<img src="{{ url_for('static', filename='styles/images/overview.jpeg')}}" alt="Ritz" style="padding:100px;" style="width=100%">
+<h1>Overview</h1>
+<p>Crazy Taxi is among the first companies in India to focus on car rental along with chauffeur-driven car rentals. It was founded by Agnitha and Akash in 2017 in Mangalore, India. As of February 2017, the company operates a fleet of over 300 vehicles in 4 cities across the country: Bangalore, Chennai, Hyderabad , Bhubaneswar.
+Indian duo Agnitha Mohanram and Akash Rao, met while studying at the National Institute of Technology, Karnataka, where both are meant to graduate in 2019. In their third year in college, the idea of an online car rental system struck their mind. Taking inspiration from different such technology, they decided to integrate an car rental system with a chauffeur driven car rental system to result in the first of it's kind, Crazy Taxi. 
+
+They strive to increase their customer base by constantly improving the features offered by their website. The company is gaining popularity and is soon going to expand it's customer base to foreign countries. Akash and Agnitha aim to achieve this goal by 2019, the year they graduate from the prestigious institute. 
+
+</p>
+</div>
+<style>
+.overview
+{	
+	text-align:center;	
+	margin-top:100px;
+	width:75%;
+	margin:auto;
+	padding:100px; 
+	color:white; 	
+	background-color:black; 
+}
+
+h1
+{
+	font-size:40px;
+
+}
+p
+{	
+	font-size:30px; 
+	padding:10px; 
+
+}
+body
+{
+margin-top:100px; 
+color:black;
+margin:auto; 
+
+}
+img
+{
+	width:75%;
+	margin:auto;	
+}
+</style>
+</body>
+</html>
+
+

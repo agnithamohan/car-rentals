@@ -1,0 +1,70 @@
+<form action = "http://localhost:5000/final" method = "post">
+<table>
+
+<TR>
+
+  
+   <TD class="c2"><h2>Car Model</h2></TD>
+   <TD class="c3"><h2>Car Company</h2></TD>
+   <TD class="c4"><SPAN><h2>No. of Seats</h2></SPAN></TD>
+   <TD class="c5"><SPAN><h2>Car Type</h2></SPAN></TD>
+   <TD class="c6"><SPAN><h2>Weekday Rates</h2></SPAN></TD>
+   <TD class="c7"><SPAN><h2>Weekend Rates</h2></SPAN></TD>
+   <TD class="c8"><SPAN><h2>Peak Season Rates</h2></SPAN></TD>
+</TR>
+{% for item in items %}
+	
+<TR>
+  
+   <TD class="c2">{{item[0]}}</TD>
+   <TD class="c3">{{item[1]}}</TD>
+   <TD class="c4"><SPAN>{{item[2]}}</SPAN></TD>
+   <TD class="c5"><SPAN>{{item[3]}}</SPAN></TD>
+   <TD class="c6"><SPAN>{{item[4]}} seater</SPAN></TD>
+   <TD class="c7"><SPAN>Rs.{{item[5]}}</SPAN></TD>
+   <TD class="c8"><SPAN>Rs.{{item[6]}}</SPAN></TD>
+   
+	
+</TR>
+{% endfor %}
+</table>
+
+<div>
+<h1>Overview</h1>
+<h5>Crazy Taxi is among the first companies in India to focus on car rental, in contrast to earlier companies in India that focused on chauffeur-driven rentals. Crazy Taxi was founded by Agnitha and Akash in 2013 in Bangalore, India. As of February 2017, the company operates a fleet of over 300 vehicles in 4 cities across the country: Bangalore, Chennai, Hyderabad , Bhubaneswar.</h5>
+</div>
+<style>
+color:white;
+margin:auto; 
+padding:20px;
+</style>
+
+
+
+<h1>Our Team</h1>
+<hr>
+<p>
+	<img src="akash.jpeg" alt="Akash" style="float:left">
+	<h4  style="color:blue">Akash Rao</h4>
+
+	<h1 style="color:blue">Co-Founder & Chief Executive Officer</h1>
+	
+	<p>
+	</p>
+	</p>
+
+
+
+<p>
+	<img src="Agnitha.jpg" alt="Agnitha" style="float:left">
+	<h4  style="color:blue">Agnitha Mohanram</h4>
+
+	<h1 style="color:blue">Co-Founder & Chief Operating Officer</h1>
+	
+	<p>
+	</p>
+	</p>
+
+
+
+
